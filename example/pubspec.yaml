@@ -1,5 +1,5 @@
-name: country_list_pick_example
-description: Demonstrates how to use the country_list_pick plugin.
+name: country_list_pick_with_nation_example
+description: Demonstrates how to use the country_list_pick_with_nation plugin.
 publish_to: 'none'
 
 environment:
@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  country_list_pick:
+  country_list_pick_with_nation:
     path: ../
 
 # For information on the generic Dart part of this file, see the

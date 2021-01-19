@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:country_list_pick/country_selection_theme.dart';
-import 'package:country_list_pick/support/code_country.dart';
+import 'package:country_list_pick_with_nation/country_selection_theme.dart';
+import 'package:country_list_pick_with_nation/support/code_country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -151,7 +151,7 @@ class _SelectionListState extends State<SelectionList> {
                             child: ListTile(
                               leading: Image.asset(
                                 widget.initialSelection.flagUri,
-                                package: 'country_list_pick',
+                                package: 'country_list_pick_with_nation',
                                 width: 32.0,
                               ),
                               title: Text(widget.initialSelection.name),
@@ -212,7 +212,7 @@ class _SelectionListState extends State<SelectionList> {
         child: ListTile(
           leading: Image.asset(
             e.flagUri,
-            package: 'country_list_pick',
+            package: 'country_list_pick_with_nation',
             width: 30.0,
           ),
           title: Text(e.name),

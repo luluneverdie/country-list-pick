@@ -1,4 +1,4 @@
-group 'id.duende.country_list_pick'
+group 'id.duende.country_list_pick_with_nation'
 version '1.0-SNAPSHOT'
 
 buildscript {

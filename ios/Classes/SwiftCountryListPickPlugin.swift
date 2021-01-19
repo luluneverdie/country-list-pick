@@ -3,7 +3,7 @@ import UIKit
 
 public class SwiftCountryListPickPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "country_list_pick", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "country_list_pick_with_nation", binaryMessenger: registrar.messenger())
     let instance = SwiftCountryListPickPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }

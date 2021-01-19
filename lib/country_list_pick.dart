@@ -1,8 +1,10 @@
-import 'package:country_list_pick/country_selection_theme.dart';
-import 'package:country_list_pick/selection_list.dart';
-import 'package:country_list_pick/support/code_countries_en.dart';
-import 'package:country_list_pick/support/code_country.dart';
-import 'package:country_list_pick/support/code_countrys.dart';
+import 'package:country_list_pick_with_nation/country_selection_theme.dart';
+import 'package:country_list_pick_with_nation/selection_list.dart';
+import 'package:country_list_pick_with_nation/support/code_countries_en.dart';
+import 'package:country_list_pick_with_nation/support/code_country.dart';
+import 'package:country_list_pick_with_nation/support/code_countrys.dart';
+import 'package:country_list_pick_with_nation/support/code_nationalities.dart';
+import 'package:country_list_pick_with_nation/support/code_nationalities_en.dart';
 import 'package:flutter/material.dart';
 
 import 'support/code_country.dart';
@@ -36,6 +38,11 @@ class CountryListPick extends StatefulWidget {
   _CountryListPickState createState() {
     List<Map> jsonList =
         this.theme?.showEnglishName ?? true ? countriesEnglish : codes;
+
+    if(this.theme?.displayAsNationality){
+      jsonList = this.theme?.showEnglishName ?? true ? nationalitiesEnglish : nationalitiesCodes;
+    }
+
 
     List elements = jsonList
         .map((s) => CountryCode(
@@ -114,7 +121,7 @@ class _CountryListPickState extends State<CountryListPick> {
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Image.asset(
                         selectedItem.flagUri,
-                        package: 'country_list_pick',
+                        package: 'country_list_pick_with_nation',
                         width: 32.0,
                       ),
                     ),

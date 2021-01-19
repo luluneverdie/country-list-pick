@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('country_list_pick');
+  const MethodChannel channel = MethodChannel('country_list_pick_with_nation');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
