@@ -4,13 +4,18 @@ import 'package:country_list_pick_with_nation/country_selection_theme.dart';
 import 'package:country_list_pick_with_nation/support/code_country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'country_list_pick.dart';
 
 class SelectionList extends StatefulWidget {
   SelectionList(this.elements, this.initialSelection,
-      {Key key, this.appBar, this.theme, this.countryBuilder,
-        this.useUiOverlay = true, this.useSafeArea = false})
+      {Key key,
+      this.appBar,
+      this.theme,
+      this.countryBuilder,
+      this.useUiOverlay = true,
+      this.useSafeArea = false})
       : super(key: key);
 
   final PreferredSizeWidget appBar;
@@ -254,20 +259,19 @@ class _SelectionListState extends State<SelectionList> {
                 : Colors.transparent,
             shape: BoxShape.circle,
           ),
-          child: Text(
-            _alphabet[index],
-            textAlign: TextAlign.center,
-            style: (index == posSelected)
-                ? TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        widget.theme?.alphabetSelectedTextColor ?? Colors.white)
-                : TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: widget.theme?.alphabetTextColor ?? Colors.black),
-          ),
+          child: Text(_alphabet[index],
+              textAlign: TextAlign.center,
+              style: (index == posSelected)
+                  ? GoogleFonts.roboto(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: widget.theme?.alphabetSelectedTextColor ??
+                          Colors.white)
+                  : GoogleFonts.roboto(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      color: widget.theme?.alphabetTextColor ?? Colors.black)),
         ),
       ),
     );
