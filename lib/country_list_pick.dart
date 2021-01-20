@@ -9,9 +9,8 @@ import 'package:flutter/material.dart';
 
 import 'support/code_country.dart';
 
-export 'support/code_country.dart';
-
 export 'country_selection_theme.dart';
+export 'support/code_country.dart';
 
 class CountryListPick extends StatefulWidget {
   CountryListPick(
@@ -23,6 +22,7 @@ class CountryListPick extends StatefulWidget {
       this.theme,
       this.useUiOverlay = true,
       this.useSafeArea = false});
+
   final String initialSelection;
   final ValueChanged<CountryCode> onChanged;
   final PreferredSizeWidget appBar;
@@ -39,10 +39,12 @@ class CountryListPick extends StatefulWidget {
     List<Map> jsonList =
         this.theme?.showEnglishName ?? true ? countriesEnglish : codes;
 
-    if(this.theme?.displayAsNationality){
-      jsonList = this.theme?.showEnglishName ?? true ? nationalitiesEnglish : nationalitiesCodes;
+    if (this.theme?.displayAsNationality !=null
+         && this.theme?.displayAsNationality == true) {
+      jsonList = this.theme?.showEnglishName ?? true
+          ? nationalitiesEnglish
+          : nationalitiesCodes;
     }
-
 
     List elements = jsonList
         .map((s) => CountryCode(
@@ -59,6 +61,7 @@ class CountryListPick extends StatefulWidget {
 class _CountryListPickState extends State<CountryListPick> {
   CountryCode selectedItem;
   List elements = [];
+
   _CountryListPickState(this.elements);
 
   @override
