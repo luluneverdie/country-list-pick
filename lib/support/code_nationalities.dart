@@ -254,7 +254,7 @@ List<Map> nationalitiesCodes = [
     "dial_code": "+255",
     "code": "TZ"
   },
-  {"name": "ประเทศไทย", "dial_code": "+66", "code": "TH"},
+  {"name": "ไทย", "dial_code": "+66", "code": "TH"},
   {"name": "Timor-Leste", "dial_code": "+670", "code": "TL"},
   {"name": "Togolese", "dial_code": "+228", "code": "TG"},
   {"name": "Tokelau", "dial_code": "+690", "code": "TK"},
