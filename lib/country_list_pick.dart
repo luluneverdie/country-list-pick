@@ -14,14 +14,16 @@ export 'support/code_country.dart';
 
 class CountryListPick extends StatefulWidget {
   CountryListPick(
-      {this.onChanged,
+      {Key key,
+      this.onChanged,
       this.initialSelection,
       this.appBar,
       this.pickerBuilder,
       this.countryBuilder,
       this.theme,
       this.useUiOverlay = true,
-      this.useSafeArea = false});
+      this.useSafeArea = false})
+      : super(key: key);
 
   final String initialSelection;
   final ValueChanged<CountryCode> onChanged;
@@ -35,12 +37,12 @@ class CountryListPick extends StatefulWidget {
   final bool useSafeArea;
 
   @override
-  _CountryListPickState createState() {
+  CountryListPickState createState() {
     List<Map> jsonList =
         this.theme?.showEnglishName ?? true ? countriesEnglish : codes;
 
-    if (this.theme?.displayAsNationality !=null
-         && this.theme?.displayAsNationality == true) {
+    if (this.theme?.displayAsNationality != null &&
+        this.theme?.displayAsNationality == true) {
       jsonList = this.theme?.showEnglishName ?? true
           ? nationalitiesEnglish
           : nationalitiesCodes;
@@ -54,15 +56,15 @@ class CountryListPick extends StatefulWidget {
               flagUri: 'flags/${s['code'].toLowerCase()}.png',
             ))
         .toList();
-    return _CountryListPickState(elements);
+    return CountryListPickState(elements);
   }
 }
 
-class _CountryListPickState extends State<CountryListPick> {
+class CountryListPickState extends State<CountryListPick> {
   CountryCode selectedItem;
   List elements = [];
 
-  _CountryListPickState(this.elements);
+  CountryListPickState(this.elements);
 
   @override
   void initState() {
@@ -150,5 +152,13 @@ class _CountryListPickState extends State<CountryListPick> {
               ],
             ),
     );
+  }
+
+  void setSelectedCountry(String countryCode) {
+    selectedItem = elements.firstWhere(
+        (e) => (e.code.toUpperCase() == countryCode.toUpperCase()),
+        orElse: () => elements[0] as CountryCode);
+
+    setState(() {});
   }
 }

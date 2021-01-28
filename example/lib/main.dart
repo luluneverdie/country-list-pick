@@ -9,6 +9,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final countryStateKey = GlobalKey<CountryListPickState>();
+
   @override
   void initState() {
     super.initState();
@@ -24,7 +26,9 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.amber,
         ),
         body: Center(
-          child: CountryListPick(
+            child: Column(children: [
+          CountryListPick(
+            key: countryStateKey,
             appBar: AppBar(
               backgroundColor: Colors.amber,
               title: Text('Choisir un pays'),
@@ -57,7 +61,7 @@ class _MyAppState extends State<MyApp> {
               print(code.flagUri);
             },
           ),
-        ),
+        ])),
       ),
     );
   }
