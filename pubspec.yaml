@@ -4,16 +4,15 @@ version: 0.0.5
 homepage: https://github.com/luluneverdie/country-list-pick
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^1.1.1
-
+  google_fonts: ^2.0.0
 
 dev_dependencies:
-  google_fonts: ^1.1.1
+  google_fonts: ^2.0.0
   flutter_test:
     sdk: flutter
 
