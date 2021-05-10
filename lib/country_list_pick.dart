@@ -14,7 +14,7 @@ export 'support/code_country.dart';
 
 class CountryListPick extends StatefulWidget {
   CountryListPick(
-      {Key key,
+      {Key? key,
       this.onChanged,
       this.initialSelection,
       this.appBar,
@@ -25,13 +25,13 @@ class CountryListPick extends StatefulWidget {
       this.useSafeArea = false})
       : super(key: key);
 
-  final String initialSelection;
-  final ValueChanged<CountryCode> onChanged;
-  final PreferredSizeWidget appBar;
-  final Widget Function(BuildContext context, CountryCode countryCode)
+  final String? initialSelection;
+  final ValueChanged<CountryCode>? onChanged;
+  final PreferredSizeWidget? appBar;
+  final Widget Function(BuildContext context, CountryCode countryCode)?
       pickerBuilder;
-  final CountryTheme theme;
-  final Widget Function(BuildContext context, CountryCode countryCode)
+  final CountryTheme? theme;
+  final Widget Function(BuildContext context, CountryCode countryCode)?
       countryBuilder;
   final bool useUiOverlay;
   final bool useSafeArea;
@@ -61,7 +61,7 @@ class CountryListPick extends StatefulWidget {
 }
 
 class CountryListPickState extends State<CountryListPick> {
-  CountryCode selectedItem;
+  CountryCode? selectedItem;
   List elements = [];
 
   CountryListPickState(this.elements);
@@ -71,7 +71,7 @@ class CountryListPickState extends State<CountryListPick> {
     if (widget.initialSelection != null) {
       selectedItem = elements.firstWhere(
           (e) =>
-              (e.code.toUpperCase() == widget.initialSelection.toUpperCase()) ||
+              (e.code.toUpperCase() == widget.initialSelection!.toUpperCase()) ||
               (e.dialCode == widget.initialSelection),
           orElse: () => elements[0] as CountryCode);
     } else {
@@ -81,8 +81,8 @@ class CountryListPickState extends State<CountryListPick> {
     super.initState();
   }
 
-  void _awaitFromSelectScreen(BuildContext context, PreferredSizeWidget appBar,
-      CountryTheme theme) async {
+  void _awaitFromSelectScreen(BuildContext context, PreferredSizeWidget? appBar,
+      CountryTheme? theme) async {
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
@@ -103,19 +103,18 @@ class CountryListPickState extends State<CountryListPick> {
 
     setState(() {
       selectedItem = result ?? selectedItem;
-      widget.onChanged(result ?? selectedItem);
+      widget.onChanged!(result ?? selectedItem);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      padding: EdgeInsets.symmetric(horizontal: 0.0),
+    return TextButton(
       onPressed: () {
         _awaitFromSelectScreen(context, widget.appBar, widget.theme);
       },
       child: widget.pickerBuilder != null
-          ? widget.pickerBuilder(context, selectedItem)
+          ? widget.pickerBuilder!(context, selectedItem!)
           : Flex(
               direction: Axis.horizontal,
               mainAxisSize: MainAxisSize.min,
@@ -125,8 +124,8 @@ class CountryListPickState extends State<CountryListPick> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
                       child: Image.asset(
-                        selectedItem.flagUri,
-                        package: 'country_list_pick_with_nation',
+                        selectedItem!.flagUri!,
+                        package: 'country_list_pick',
                         width: 32.0,
                       ),
                     ),
@@ -142,7 +141,7 @@ class CountryListPickState extends State<CountryListPick> {
                   Flexible(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Text(selectedItem.toCountryStringOnly()),
+                      child: Text(selectedItem!.toCountryStringOnly()),
                     ),
                   ),
                 if (widget.theme?.isDownIcon ?? true == true)

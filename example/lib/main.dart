@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
             key: countryStateKey,
             appBar: AppBar(
               backgroundColor: Colors.amber,
-              title: Text('Choisir un pays'),
+              title: Text('Pick your country'),
             ),
             // if you need custome picker use this
             // pickerBuilder: (context, CountryCode countryCode) {
